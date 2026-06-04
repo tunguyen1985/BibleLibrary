@@ -42,8 +42,3 @@ document.getElementById('font-larger').addEventListener('click', () => {
 
 // ===== KHỞI ĐỘNG =====
 init()
-
-// ===== ĐĂNG KÝ SERVICE WORKER =====
-if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  navigator.serviceWorker.register('./sw.js').catch(() => {})
-}
