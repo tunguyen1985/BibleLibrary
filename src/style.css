@@ -32,7 +32,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-family: Arial, 'Helvetica Neue', sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -79,6 +79,8 @@ body {
   align-items: center;
   justify-content: center;
   transition: background 0.15s;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
 }
 .btn-icon:hover { background: rgba(255,255,255,0.15); }
 .btn-icon.hidden { visibility: hidden; }
@@ -280,82 +282,6 @@ a.btn-icon { text-decoration: none; }
   padding: 20px; color: #fff; font-size: 1rem; text-align: center;
 }
 
-/* ===== SETTINGS ===== */
-.settings-panel {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 24px 16px;
-}
-
-.settings-panel h2 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 24px;
-}
-
-.setting-group {
-  margin-bottom: 28px;
-}
-
-.setting-group label {
-  display: block;
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.font-controls {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-#font-size-label {
-  min-width: 40px;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.btn-round {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg-secondary);
-  color: var(--text);
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-.btn-round:hover { background: var(--border); }
-
-.theme-controls {
-  display: flex;
-  gap: 10px;
-}
-
-.btn-theme {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg-secondary);
-  color: var(--text);
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.btn-theme.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
-  font-weight: 600;
-}
 
 /* ===== LOADING ===== */
 .loading {

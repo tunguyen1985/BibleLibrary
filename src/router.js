@@ -1,7 +1,6 @@
 const routes = {
   home: () => import('./components/home.js'),
-  reader: () => import('./components/reader.js'),
-  settings: () => import('./components/settings.js')
+  reader: () => import('./components/reader.js')
 }
 
 function showPage(name) {
@@ -20,18 +19,13 @@ function resolveHash(hash) {
   const path = (hash || '').replace(/^#/, '') || '/'
   if (path.startsWith('/post/')) {
     render('reader', { slug: path.slice(6) })
-  } else if (path === '/settings') {
-    render('settings')
   } else {
     render('home')
   }
 }
 
 export function navigate(page, params = {}) {
-  const hash = page === 'reader' ? `/post/${params.slug}`
-             : page === 'settings' ? '/settings'
-             : '/'
-  location.hash = hash
+  location.hash = page === 'reader' ? `/post/${params.slug}` : '/'
 }
 
 export function init() {

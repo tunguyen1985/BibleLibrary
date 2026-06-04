@@ -1,8 +1,12 @@
 import { navigate, init } from './router.js'
 
+const MIN_FONT = 12
+const MAX_FONT = 24
+const STEP = 2
+
 // ===== THEME & FONT (áp dụng sớm để tránh flash) =====
 const savedTheme = localStorage.getItem('theme') || 'light'
-const savedFont = localStorage.getItem('fontSize') || '16'
+const savedFont = Number(localStorage.getItem('fontSize') || 16)
 document.documentElement.setAttribute('data-theme', savedTheme)
 document.documentElement.style.setProperty('--base-font', savedFont + 'px')
 
@@ -12,15 +16,28 @@ document.getElementById('btn-back').addEventListener('click', () => {
   else navigate('home')
 })
 
-document.getElementById('btn-settings').addEventListener('click', () => {
-  navigate('settings')
-})
-
 document.getElementById('btn-theme').addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme')
-  const next = current === 'dark' ? 'light' : 'dark'
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
   document.documentElement.setAttribute('data-theme', next)
   localStorage.setItem('theme', next)
+})
+
+document.getElementById('font-smaller').addEventListener('click', () => {
+  const cur = Number(localStorage.getItem('fontSize') || 16)
+  if (cur > MIN_FONT) {
+    const next = cur - STEP
+    document.documentElement.style.setProperty('--base-font', next + 'px')
+    localStorage.setItem('fontSize', next)
+  }
+})
+
+document.getElementById('font-larger').addEventListener('click', () => {
+  const cur = Number(localStorage.getItem('fontSize') || 16)
+  if (cur < MAX_FONT) {
+    const next = cur + STEP
+    document.documentElement.style.setProperty('--base-font', next + 'px')
+    localStorage.setItem('fontSize', next)
+  }
 })
 
 // ===== KHỞI ĐỘNG =====
