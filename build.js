@@ -75,8 +75,13 @@ function generateIndex(sites) {
   fs.writeFileSync(path.join(distDir, 'manifest.json'), JSON.stringify(manifest, null, 2))
 
   // Portal service worker
-  const sw = `const CACHE = 'portal-v1'
-const PRECACHE = ['./index.html', './manifest.json', './icons/icon-192.webp', './icons/icon-512.webp']
+  const cacheVersion = `portal-${Date.now()}`
+  const precacheList = JSON.stringify([
+    './index.html', './manifest.json', './icons/icon-192.webp', './icons/icon-512.webp',
+    ...cards.map(c => `./${c.site}/index.html`)
+  ])
+  const sw = `const CACHE = '${cacheVersion}'
+const PRECACHE = ${precacheList}
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()))
