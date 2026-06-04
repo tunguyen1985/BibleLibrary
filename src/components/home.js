@@ -6,26 +6,7 @@ const PREVIEW_COUNT = 5
 
 let selectedCategory = 'all'
 let searchTimer = null
-let arrowsInitialized = false
 let panelInitialized = false
-
-function updateArrows(bar, prev, next) {
-  prev.classList.toggle('hidden', bar.scrollLeft <= 0)
-  next.classList.toggle('hidden', bar.scrollLeft + bar.clientWidth >= bar.scrollWidth - 1)
-}
-
-function initCategoryArrows() {
-  if (arrowsInitialized) return
-  arrowsInitialized = true
-
-  const bar = document.getElementById('category-bar')
-  const prev = document.querySelector('.btn-cat-prev')
-  const next = document.querySelector('.btn-cat-next')
-
-  prev.addEventListener('click', () => bar.scrollBy({ left: -200, behavior: 'smooth' }))
-  next.addEventListener('click', () => bar.scrollBy({ left: 200, behavior: 'smooth' }))
-  bar.addEventListener('scroll', () => updateArrows(bar, prev, next), { passive: true })
-}
 
 function initCategoryPanel() {
   if (panelInitialized) return
@@ -38,6 +19,7 @@ function initCategoryPanel() {
     const opening = panel.classList.contains('hidden')
     panel.classList.toggle('hidden', !opening)
     toggle.classList.toggle('open', opening)
+    toggle.querySelector('.toggle-label').textContent = opening ? 'Thu gọn' : 'Xem thêm'
   })
 }
 
@@ -48,7 +30,9 @@ function selectCategory(id) {
   )
   const panel = document.getElementById('category-panel')
   panel.classList.add('hidden')
-  document.getElementById('btn-cat-toggle').classList.remove('open')
+  const tog = document.getElementById('btn-cat-toggle')
+  tog.classList.remove('open')
+  tog.querySelector('.toggle-label').textContent = 'Xem thêm'
   renderList(document.getElementById('search-input').value.trim())
 }
 
@@ -87,9 +71,6 @@ function renderCategories() {
     btn.addEventListener('click', () => selectCategory(btn.dataset.id))
   })
 
-  const prev = document.querySelector('.btn-cat-prev')
-  const next = document.querySelector('.btn-cat-next')
-  if (prev && next) updateArrows(bar, prev, next)
 }
 
 function renderList(query = '') {
@@ -135,7 +116,6 @@ export default function home() {
   document.getElementById('btn-back').classList.add('hidden')
 
   renderCategories()
-  initCategoryArrows()
   initCategoryPanel()
   renderList()
 
