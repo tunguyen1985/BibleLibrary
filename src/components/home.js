@@ -4,6 +4,25 @@ import categoriesData from '@data/categories.json'
 
 let selectedCategory = 'all'
 let searchTimer = null
+let arrowsInitialized = false
+
+function updateArrows(bar, prev, next) {
+  prev.classList.toggle('hidden', bar.scrollLeft <= 0)
+  next.classList.toggle('hidden', bar.scrollLeft + bar.clientWidth >= bar.scrollWidth - 1)
+}
+
+function initCategoryArrows() {
+  if (arrowsInitialized) return
+  arrowsInitialized = true
+
+  const bar = document.getElementById('category-bar')
+  const prev = document.querySelector('.btn-cat-prev')
+  const next = document.querySelector('.btn-cat-next')
+
+  prev.addEventListener('click', () => bar.scrollBy({ left: -200, behavior: 'smooth' }))
+  next.addEventListener('click', () => bar.scrollBy({ left: 200, behavior: 'smooth' }))
+  bar.addEventListener('scroll', () => updateArrows(bar, prev, next), { passive: true })
+}
 
 function renderCategories() {
   const bar = document.getElementById('category-bar')
@@ -22,6 +41,10 @@ function renderCategories() {
       renderList(document.getElementById('search-input').value.trim())
     })
   })
+
+  const prev = document.querySelector('.btn-cat-prev')
+  const next = document.querySelector('.btn-cat-next')
+  if (prev && next) updateArrows(bar, prev, next)
 }
 
 function renderList(query = '') {
@@ -64,6 +87,7 @@ export default function home() {
   document.getElementById('btn-back').classList.add('hidden')
 
   renderCategories()
+  initCategoryArrows()
   renderList()
 
   const input = document.getElementById('search-input')

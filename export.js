@@ -96,12 +96,12 @@ async function processContent(html) {
 }
 
 // === LẤY TẤT CẢ TRANG TỪ WP API ===
-async function fetchAll(endpoint) {
+async function fetchAll(endpoint, extra = '') {
   const items = []
   let page = 1
 
   while (true) {
-    const url = `${WP_URL}/wp-json/wp/v2/${endpoint}?per_page=${PER_PAGE}&page=${page}`
+    const url = `${WP_URL}/wp-json/wp/v2/${endpoint}?per_page=${PER_PAGE}&page=${page}${extra}`
     try {
       const res = await axios.get(url, { timeout: 30000 })
       const data = res.data
@@ -133,8 +133,8 @@ async function main() {
   }
 
   // 1. Lấy categories
-  console.log('1/3 Đang lấy categories...')
-  const rawCategories = await fetchAll('categories')
+  console.log('1/4 Đang lấy categories...')
+  const rawCategories = await fetchAll('categories', '&hide_empty=false')
   const categories = rawCategories.map(c => ({
     id: c.id, name: c.name, slug: c.slug, count: c.count
   }))
@@ -142,7 +142,7 @@ async function main() {
   console.log(`    → ${categories.length} chuyên mục\n`)
 
   // 2. Lấy posts + xử lý hình
-  console.log('2/3 Đang lấy bài viết + tải hình...')
+  console.log('2/4 Đang lấy bài viết + tải hình...')
   const rawPosts = await fetchAll('posts')
   const posts = []
   const searchIndex = []
@@ -175,14 +175,46 @@ async function main() {
 
   console.log(`\n    → ${posts.length} bài viết\n`)
 
-  // 3. Lưu file
-  console.log('3/3 Đang lưu file...')
+  // 3. Lấy pages + xử lý hình
+  console.log('3/4 Đang lấy trang tĩnh (pages) + tải hình...')
+  const rawPages = await fetchAll('pages')
+
+  for (let i = 0; i < rawPages.length; i++) {
+    const p = rawPages[i]
+    process.stdout.write(`    Trang ${i + 1}/${rawPages.length}: ${p.slug}\r`)
+
+    const processedContent = await processContent(p.content?.rendered || '')
+    const excerpt = stripHtml(p.excerpt?.rendered || '').slice(0, 200)
+
+    posts.push({
+      id: p.id,
+      title: p.title?.rendered || '',
+      slug: p.slug,
+      date: p.date?.slice(0, 10) || '',
+      excerpt,
+      content: processedContent,
+      category_ids: []
+    })
+
+    searchIndex.push({
+      id: p.id,
+      title: p.title?.rendered || '',
+      slug: p.slug,
+      excerpt,
+      category_ids: []
+    })
+  }
+
+  console.log(`\n    → ${rawPages.length} trang tĩnh\n`)
+
+  // 4. Lưu file
+  console.log('4/4 Đang lưu file...')
   fs.writeFileSync(path.join(OUTPUT_DIR, 'posts.json'), JSON.stringify(posts))
   fs.writeFileSync(path.join(OUTPUT_DIR, 'search-index.json'), JSON.stringify(searchIndex))
 
   const imagesCount = fs.readdirSync(IMAGES_DIR).length
   console.log(`\n✅ Hoàn thành! sites/${SITE_NAME}/`)
-  console.log(`   posts.json        : ${posts.length} bài`)
+  console.log(`   posts.json        : ${posts.length} mục (${rawPosts.length} bài + ${rawPages.length} trang)`)
   console.log(`   categories.json   : ${categories.length} chuyên mục`)
   console.log(`   search-index.json : ${searchIndex.length} mục`)
   console.log(`   images/           : ${imagesCount} hình\n`)
