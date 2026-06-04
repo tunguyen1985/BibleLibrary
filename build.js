@@ -48,8 +48,8 @@ function generateIndex(sites) {
     const count = fs.existsSync(indexPath)
       ? JSON.parse(fs.readFileSync(indexPath, 'utf-8')).length
       : 0
-    return { site, title: config.title, url: config.url, count }
-  })
+    return { site, title: config.title, url: config.url, count, order: config.order ?? 999 }
+  }).sort((a, b) => a.order - b.order)
 
   const html = `<!DOCTYPE html>
 <html lang="vi">
