@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2563eb" />
+  <title>Thư Viện</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="app">
+    <header id="top-bar">
+      <button id="btn-back" class="btn-icon hidden" aria-label="Quay lại">&#8592;</button>
+      <h1 id="app-title">Thư Viện</h1>
+      <div class="header-actions">
+        <a id="btn-home" class="btn-icon" href="../index.html" title="Về trang chủ">&#8962;</a>
+        <button id="btn-settings" class="btn-icon" aria-label="Cài đặt">&#9881;</button>
+        <button id="btn-theme" class="btn-icon" aria-label="Đổi giao diện">&#9790;</button>
+      </div>
+    </header>
+
+    <div id="page-home" class="page active">
+      <div class="search-bar">
+        <input type="search" id="search-input" placeholder="Tìm kiếm bài viết..." autocomplete="off" />
+      </div>
+      <div id="category-bar" class="category-bar"></div>
+      <div id="post-list" class="post-list"></div>
+    </div>
+
+    <div id="page-reader" class="page">
+      <article id="reader-content" class="reader-content"></article>
+    </div>
+
+    <div id="page-settings" class="page">
+      <div class="settings-panel">
+        <h2>Cài đặt</h2>
+        <div class="setting-group">
+          <label>Cỡ chữ</label>
+          <div class="font-controls">
+            <button id="font-smaller" class="btn-round">A-</button>
+            <span id="font-size-label">16px</span>
+            <button id="font-larger" class="btn-round">A+</button>
+          </div>
+        </div>
+        <div class="setting-group">
+          <label>Giao diện</label>
+          <div class="theme-controls">
+            <button id="theme-light" class="btn-theme">Sáng</button>
+            <button id="theme-dark" class="btn-theme">Tối</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
