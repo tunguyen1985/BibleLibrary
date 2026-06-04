@@ -52,7 +52,7 @@ function generateIndex(sites) {
   }).sort((a, b) => a.order - b.order)
 
   // Copy icons
-  const iconsFrom = path.join(__dirname, 'public', 'icons')
+  const iconsFrom = path.join(__dirname, 'portal', 'icons')
   const iconsTo   = path.join(distDir, 'icons')
   if (fs.existsSync(iconsFrom)) fs.cpSync(iconsFrom, iconsTo, { recursive: true })
 
