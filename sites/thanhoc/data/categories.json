@@ -1,0 +1,30 @@
+[
+  {
+    "id": "cat_1",
+    "name": "@Mục Lục",
+    "slug": "muc-luc",
+    "count": 116,
+    "type": "category"
+  },
+  {
+    "id": "tag_3",
+    "name": "Bài Giảng Tin Lành",
+    "slug": "bai-giang-tin-lanh",
+    "count": 25,
+    "type": "tag"
+  },
+  {
+    "id": "tag_4",
+    "name": "Thần Học",
+    "slug": "than-hoc",
+    "count": 25,
+    "type": "tag"
+  },
+  {
+    "id": "tag_5",
+    "name": "Giáo Lý",
+    "slug": "giao-ly",
+    "count": 6,
+    "type": "tag"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "cat_1",
+    "name": "@Mục Lục",
+    "slug": "muc-luc",
+    "count": 81,
+    "type": "category"
+  },
+  {
+    "id": "cat_6",
+    "name": "Ngày Sa-bát",
+    "slug": "ngay-sa-bat",
+    "count": 5,
+    "type": "category"
+  },
+  {
+    "id": "cat_5",
+    "name": "Sống Theo Đúng Mục Đích",
+    "slug": "song-theo-dung-muc-dich",
+    "count": 5,
+    "type": "category"
+  },
+  {
+    "id": "cat_8",
+    "name": "Các Tà Giáo",
+    "slug": "cac-ta-giao",
+    "count": 1,
+    "type": "category"
+  },
+  {
+    "id": "tag_3",
+    "name": "Bài Giảng Tin Lành",
+    "slug": "bai-giang-tin-lanh",
+    "count": 5,
+    "type": "tag"
+  },
+  {
+    "id": "tag_7",
+    "name": "Sa-bát",
+    "slug": "sa-bat",
+    "count": 3,
+    "type": "tag"
+  },
+  {
+    "id": "tag_9",
+    "name": "Biện Giáo",
+    "slug": "bien-giao",
+    "count": 1,
+    "type": "tag"
+  },
+  {
+    "id": "tag_4",
+    "name": "Easter",
+    "slug": "easter",
+    "count": 1,
+    "type": "tag"
+  }
+]
