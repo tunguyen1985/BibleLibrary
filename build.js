@@ -76,10 +76,19 @@ function generateIndex(sites) {
 
   // Portal service worker
   const cacheVersion = `portal-${Date.now()}`
-  const precacheList = JSON.stringify([
-    './index.html', './manifest.json', './icons/icon-192.webp', './icons/icon-512.webp',
-    ...cards.map(c => `./${c.site}/index.html`)
-  ])
+  const precacheEntries = [
+    './index.html', './manifest.json', './icons/icon-192.webp', './icons/icon-512.webp'
+  ]
+  for (const c of cards) {
+    precacheEntries.push(`./${c.site}/index.html`)
+    const imagesDir = path.join(distDir, c.site, 'data', 'images')
+    if (fs.existsSync(imagesDir)) {
+      const files = fs.readdirSync(imagesDir)
+      for (const f of files) precacheEntries.push(`./${c.site}/data/images/${f}`)
+      console.log(`   🖼  ${c.site}: ${files.length} ảnh vào PRECACHE`)
+    }
+  }
+  const precacheList = JSON.stringify(precacheEntries)
   const sw = `const CACHE = '${cacheVersion}'
 const PRECACHE = ${precacheList}
 
