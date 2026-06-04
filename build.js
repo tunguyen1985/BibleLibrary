@@ -51,12 +51,69 @@ function generateIndex(sites) {
     return { site, title: config.title, url: config.url, count, order: config.order ?? 999 }
   }).sort((a, b) => a.order - b.order)
 
+  // Copy icons
+  const iconsFrom = path.join(__dirname, 'public', 'icons')
+  const iconsTo   = path.join(distDir, 'icons')
+  if (fs.existsSync(iconsFrom)) fs.cpSync(iconsFrom, iconsTo, { recursive: true })
+
+  // Portal manifest
+  const manifest = {
+    name: 'Thư Viện Bài Giảng',
+    short_name: 'Thư Viện',
+    description: 'Tổng hợp các bộ sưu tập bài giảng Tin Lành',
+    display: 'standalone',
+    orientation: 'portrait',
+    start_url: './index.html',
+    scope: './',
+    theme_color: '#667eea',
+    background_color: '#f0f2ff',
+    icons: [
+      { src: './icons/icon-192.webp', sizes: '192x192', type: 'image/webp', purpose: 'any maskable' },
+      { src: './icons/icon-512.webp', sizes: '512x512', type: 'image/webp', purpose: 'any maskable' }
+    ]
+  }
+  fs.writeFileSync(path.join(distDir, 'manifest.json'), JSON.stringify(manifest, null, 2))
+
+  // Portal service worker
+  const sw = `const CACHE = 'portal-v1'
+const PRECACHE = ['./index.html', './manifest.json', './icons/icon-192.webp', './icons/icon-512.webp']
+
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()))
+})
+
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      .then(() => self.clients.claim())
+  )
+})
+
+self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return
+  e.respondWith(
+    caches.match(e.request).then(cached => cached || fetch(e.request).then(res => {
+      if (res.ok) caches.open(CACHE).then(c => c.put(e.request, res.clone()))
+      return res
+    }).catch(() => caches.match('./index.html')))
+  )
+})
+`
+  fs.writeFileSync(path.join(distDir, 'sw.js'), sw)
+
   const html = `<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thư Viện Bài Giảng</title>
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#667eea" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Thư Viện" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.webp" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -108,6 +165,11 @@ function generateIndex(sites) {
       </div>
     </a>`).join('\n')}
   </main>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {})
+    }
+  </script>
 </body>
 </html>`
 
