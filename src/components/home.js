@@ -2,9 +2,12 @@ import { navigate } from '../router.js'
 import searchIndexData from '@data/search-index.json'
 import categoriesData from '@data/categories.json'
 
+const PREVIEW_COUNT = 5
+
 let selectedCategory = 'all'
 let searchTimer = null
 let arrowsInitialized = false
+let panelInitialized = false
 
 function updateArrows(bar, prev, next) {
   prev.classList.toggle('hidden', bar.scrollLeft <= 0)
@@ -24,22 +27,64 @@ function initCategoryArrows() {
   bar.addEventListener('scroll', () => updateArrows(bar, prev, next), { passive: true })
 }
 
+function initCategoryPanel() {
+  if (panelInitialized) return
+  panelInitialized = true
+
+  const toggle = document.getElementById('btn-cat-toggle')
+  const panel = document.getElementById('category-panel')
+
+  toggle.addEventListener('click', () => {
+    const opening = panel.classList.contains('hidden')
+    panel.classList.toggle('hidden', !opening)
+    toggle.classList.toggle('open', opening)
+  })
+}
+
+function selectCategory(id) {
+  selectedCategory = id === 'all' ? 'all' : id
+  document.querySelectorAll('.btn-category').forEach(b =>
+    b.classList.toggle('active', b.dataset.id === String(selectedCategory))
+  )
+  const panel = document.getElementById('category-panel')
+  panel.classList.add('hidden')
+  document.getElementById('btn-cat-toggle').classList.remove('open')
+  renderList(document.getElementById('search-input').value.trim())
+}
+
 function renderCategories() {
   const bar = document.getElementById('category-bar')
-  const cats = [{ id: 'all', name: 'Tất cả' }, ...categoriesData.filter(c => c.count > 0)]
+  const panel = document.getElementById('category-panel')
 
-  bar.innerHTML = cats.map(c => `
-    <button class="btn-category${c.id === selectedCategory ? ' active' : ''}"
-      data-id="${c.id}">${c.name}</button>
-  `).join('')
+  const cats = categoriesData.filter(c => c.type === 'category')
+  const tags = categoriesData.filter(c => c.type === 'tag')
 
-  bar.querySelectorAll('.btn-category').forEach(btn => {
-    btn.addEventListener('click', () => {
-      selectedCategory = btn.dataset.id === 'all' ? 'all' : Number(btn.dataset.id)
-      bar.querySelectorAll('.btn-category').forEach(b => b.classList.remove('active'))
-      btn.classList.add('active')
-      renderList(document.getElementById('search-input').value.trim())
-    })
+  const previewItems = [
+    { id: 'all', name: 'Tất cả' },
+    ...cats.slice(0, PREVIEW_COUNT),
+    ...tags.slice(0, PREVIEW_COUNT)
+  ]
+
+  const btnHtml = c =>
+    `<button class="btn-category${c.id === selectedCategory ? ' active' : ''}" data-id="${c.id}">${c.name}</button>`
+
+  bar.innerHTML = previewItems.map(btnHtml).join('')
+
+  panel.innerHTML = `
+    ${cats.length ? `
+      <div class="cat-section">
+        <div class="cat-section-header">Danh mục</div>
+        <div class="cat-section-items">${cats.map(btnHtml).join('')}</div>
+      </div>` : ''}
+    ${tags.length ? `
+      <div class="cat-section">
+        <div class="cat-section-header">Nhãn</div>
+        <div class="cat-section-items">${tags.map(btnHtml).join('')}</div>
+      </div>` : ''}
+  `
+
+  document.querySelectorAll('#category-bar .btn-category, #category-panel .btn-category').forEach(btn => {
+    btn.addEventListener('click', () => selectCategory(btn.dataset.id))
   })
 
   const prev = document.querySelector('.btn-cat-prev')
@@ -53,7 +98,10 @@ function renderList(query = '') {
 
   let posts = searchIndexData
   if (selectedCategory !== 'all') {
-    posts = posts.filter(p => p.category_ids?.includes(selectedCategory))
+    posts = posts.filter(p =>
+      p.category_ids?.includes(selectedCategory) ||
+      p.tag_ids?.includes(selectedCategory)
+    )
   }
   if (q) {
     posts = posts.filter(p =>
@@ -88,6 +136,7 @@ export default function home() {
 
   renderCategories()
   initCategoryArrows()
+  initCategoryPanel()
   renderList()
 
   const input = document.getElementById('search-input')

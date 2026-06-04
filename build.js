@@ -56,43 +56,46 @@ function generateIndex(sites) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thư Viện Offline</title>
+  <title>Thư Viện Bài Giảng</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f5f5f5; color: #1a1a1a; min-height: 100vh;
+      font-family: Arial, 'Helvetica Neue', sans-serif;
+      background: #f0f2ff; color: #2d3748; min-height: 100vh;
     }
     header {
-      background: #2563eb; color: white; padding: 20px 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white; padding: 20px 24px;
+      box-shadow: 0 2px 8px rgba(102,126,234,.4);
     }
     header h1 { font-size: 1.4rem; font-weight: 700; }
-    header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
-    main { max-width: 640px; margin: 32px auto; padding: 0 16px; }
+    header p { font-size: .85rem; opacity: .85; margin-top: 4px; }
+    main { max-width: 640px; margin: 32px auto; padding: 0 16px 32px; }
     .site-card {
       display: block; background: white; border-radius: 12px;
       padding: 20px 24px; margin-bottom: 12px;
       text-decoration: none; color: inherit;
-      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+      box-shadow: 0 4px 12px rgba(102,126,234,.15);
       transition: box-shadow .15s, transform .15s;
+      border: 1px solid #e2e8f0;
     }
     .site-card:hover {
-      box-shadow: 0 4px 16px rgba(37,99,235,.15);
-      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(102,126,234,.25);
+      transform: translateY(-2px);
     }
-    .site-card-title { font-size: 1.1rem; font-weight: 600; color: #2563eb; }
-    .site-card-meta { font-size: .85rem; color: #666; margin-top: 6px; }
+    .site-card-title { font-size: 1.1rem; font-weight: 600; color: #667eea; }
+    .site-card-meta { font-size: .85rem; color: #718096; margin-top: 6px; }
     .badge {
-      display: inline-block; background: #eff6ff; color: #2563eb;
-      border-radius: 20px; padding: 2px 10px; font-size: .8rem;
-      font-weight: 500; margin-right: 8px;
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white; border-radius: 20px; padding: 2px 10px;
+      font-size: .8rem; font-weight: 600; margin-right: 8px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>📚 Thư Viện Offline</h1>
+    <h1>📚 Thư Viện Bài Giảng</h1>
     <p>Chọn bộ sưu tập để đọc</p>
   </header>
   <main>

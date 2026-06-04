@@ -1,8 +1,198 @@
 [
   {
-    "id": 1,
+    "id": "cat_1",
     "name": "Mục Lục",
     "slug": "uncategorized",
-    "count": 103
+    "count": 103,
+    "type": "category"
+  },
+  {
+    "id": "tag_11",
+    "name": "Tận Thế",
+    "slug": "tan-the",
+    "count": 74,
+    "type": "tag"
+  },
+  {
+    "id": "tag_12",
+    "name": "Bài Giảng",
+    "slug": "bai-giang",
+    "count": 70,
+    "type": "tag"
+  },
+  {
+    "id": "tag_10",
+    "name": "Tin Lành",
+    "slug": "tin-lanh",
+    "count": 62,
+    "type": "tag"
+  },
+  {
+    "id": "tag_16",
+    "name": "AntiChrist",
+    "slug": "antichrist",
+    "count": 61,
+    "type": "tag"
+  },
+  {
+    "id": "tag_13",
+    "name": "Hội Thánh",
+    "slug": "hoi-thanh",
+    "count": 59,
+    "type": "tag"
+  },
+  {
+    "id": "tag_15",
+    "name": "Huỳnh Christian Priscilla",
+    "slug": "huynh-christian-priscilla-my-linh",
+    "count": 59,
+    "type": "tag"
+  },
+  {
+    "id": "tag_14",
+    "name": "Huỳnh Christian Timothy",
+    "slug": "huynh-christian-timothy",
+    "count": 59,
+    "type": "tag"
+  },
+  {
+    "id": "tag_9",
+    "name": "Israel",
+    "slug": "israel",
+    "count": 59,
+    "type": "tag"
+  },
+  {
+    "id": "tag_17",
+    "name": "Khải Huyền",
+    "slug": "khai-huyen",
+    "count": 59,
+    "type": "tag"
+  },
+  {
+    "id": "tag_18",
+    "name": "Kinh Thánh",
+    "slug": "kinh-thanh",
+    "count": 59,
+    "type": "tag"
+  },
+  {
+    "id": "tag_5",
+    "name": "Thánh Kinh",
+    "slug": "thanh-kinh",
+    "count": 59,
+    "type": "tag"
+  },
+  {
+    "id": "tag_20",
+    "name": "Thiên Chúa",
+    "slug": "thien-chua",
+    "count": 59,
+    "type": "tag"
+  },
+  {
+    "id": "tag_22",
+    "name": "Cơ-đốc Nhân",
+    "slug": "co-doc-nhan",
+    "count": 58,
+    "type": "tag"
+  },
+  {
+    "id": "tag_6",
+    "name": "Loài Người",
+    "slug": "loai-nguoi",
+    "count": 58,
+    "type": "tag"
+  },
+  {
+    "id": "tag_19",
+    "name": "Lời Chúa",
+    "slug": "loi-chua",
+    "count": 58,
+    "type": "tag"
+  },
+  {
+    "id": "tag_33",
+    "name": "Chúa Đến",
+    "slug": "chua-den",
+    "count": 10,
+    "type": "tag"
+  },
+  {
+    "id": "tag_32",
+    "name": "Tái Lâm",
+    "slug": "tai-lam",
+    "count": 10,
+    "type": "tag"
+  },
+  {
+    "id": "tag_25",
+    "name": "Giải Kinh",
+    "slug": "giai-kinh",
+    "count": 6,
+    "type": "tag"
+  },
+  {
+    "id": "tag_23",
+    "name": "Thần Học",
+    "slug": "than-hoc",
+    "count": 6,
+    "type": "tag"
+  },
+  {
+    "id": "tag_35",
+    "name": "Giáo Lý",
+    "slug": "giao-ly",
+    "count": 2,
+    "type": "tag"
+  },
+  {
+    "id": "tag_28",
+    "name": "Đức Chúa Jesus",
+    "slug": "duc-chua-jesus",
+    "count": 1,
+    "type": "tag"
+  },
+  {
+    "id": "tag_27",
+    "name": "Đức Chúa Trời",
+    "slug": "duc-chua-troi",
+    "count": 1,
+    "type": "tag"
+  },
+  {
+    "id": "tag_29",
+    "name": "Đức Thánh Linh",
+    "slug": "duc-thanh-linh",
+    "count": 1,
+    "type": "tag"
+  },
+  {
+    "id": "tag_24",
+    "name": "Đức Tin",
+    "slug": "duc-tin",
+    "count": 1,
+    "type": "tag"
+  },
+  {
+    "id": "tag_26",
+    "name": "Lời Chứng",
+    "slug": "loi-chung",
+    "count": 1,
+    "type": "tag"
+  },
+  {
+    "id": "tag_31",
+    "name": "Sa-bát",
+    "slug": "sa-bat",
+    "count": 1,
+    "type": "tag"
+  },
+  {
+    "id": "tag_30",
+    "name": "Thờ Phượng",
+    "slug": "tho-phuong",
+    "count": 1,
+    "type": "tag"
   }
 ]

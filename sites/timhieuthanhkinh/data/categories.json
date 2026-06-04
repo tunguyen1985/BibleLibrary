@@ -1,68 +1,128 @@
 [
   {
-    "id": 1,
+    "id": "cat_1",
     "name": "@Mục Lục",
     "slug": "muc-luc",
-    "count": 649
+    "count": 649,
+    "type": "category"
   },
   {
-    "id": 3,
-    "name": "Admin",
-    "slug": "admin",
-    "count": 5
-  },
-  {
-    "id": 9,
-    "name": "Công Vụ Các Sứ Đồ",
-    "slug": "cong-vu-cac-su-do",
-    "count": 56
-  },
-  {
-    "id": 13,
-    "name": "Ê-sai",
-    "slug": "e-sai",
-    "count": 3
-  },
-  {
-    "id": 4,
-    "name": "Hê-bơ-rơ",
-    "slug": "he-bo-ro",
-    "count": 32
-  },
-  {
-    "id": 6,
-    "name": "I Cô-rinh-tô",
-    "slug": "i-co-rinh-to",
-    "count": 34
-  },
-  {
-    "id": 7,
-    "name": "II Cô-rinh-tô",
-    "slug": "ii-co-rinh-to",
-    "count": 23
-  },
-  {
-    "id": 18,
-    "name": "Lê-vi Ký",
-    "slug": "le-vi-ky",
-    "count": 4
-  },
-  {
-    "id": 15,
-    "name": "Nhã Ca",
-    "slug": "nha-ca",
-    "count": 13
-  },
-  {
-    "id": 10,
-    "name": "Thiên Chúa",
-    "slug": "thien-chua",
-    "count": 14
-  },
-  {
-    "id": 12,
+    "id": "cat_12",
     "name": "Tin Lành của Đức Chúa Jesus Christ",
     "slug": "tin-lanh-cua-duc-chua-jesus-christ",
-    "count": 140
+    "count": 140,
+    "type": "category"
+  },
+  {
+    "id": "cat_9",
+    "name": "Công Vụ Các Sứ Đồ",
+    "slug": "cong-vu-cac-su-do",
+    "count": 56,
+    "type": "category"
+  },
+  {
+    "id": "cat_6",
+    "name": "I Cô-rinh-tô",
+    "slug": "i-co-rinh-to",
+    "count": 34,
+    "type": "category"
+  },
+  {
+    "id": "cat_4",
+    "name": "Hê-bơ-rơ",
+    "slug": "he-bo-ro",
+    "count": 32,
+    "type": "category"
+  },
+  {
+    "id": "cat_7",
+    "name": "II Cô-rinh-tô",
+    "slug": "ii-co-rinh-to",
+    "count": 23,
+    "type": "category"
+  },
+  {
+    "id": "cat_10",
+    "name": "Thiên Chúa",
+    "slug": "thien-chua",
+    "count": 14,
+    "type": "category"
+  },
+  {
+    "id": "cat_15",
+    "name": "Nhã Ca",
+    "slug": "nha-ca",
+    "count": 13,
+    "type": "category"
+  },
+  {
+    "id": "cat_3",
+    "name": "Admin",
+    "slug": "admin",
+    "count": 5,
+    "type": "category"
+  },
+  {
+    "id": "cat_18",
+    "name": "Lê-vi Ký",
+    "slug": "le-vi-ky",
+    "count": 4,
+    "type": "category"
+  },
+  {
+    "id": "cat_13",
+    "name": "Ê-sai",
+    "slug": "e-sai",
+    "count": 3,
+    "type": "category"
+  },
+  {
+    "id": "tag_5",
+    "name": "Bài Giảng Tin Lành",
+    "slug": "bai-giang-tin-lanh",
+    "count": 285,
+    "type": "tag"
+  },
+  {
+    "id": "tag_8",
+    "name": "Chú Giải Thánh Kinh",
+    "slug": "chu-giai-thanh-kinh",
+    "count": 204,
+    "type": "tag"
+  },
+  {
+    "id": "tag_14",
+    "name": "Nhã Ca",
+    "slug": "nha-ca",
+    "count": 13,
+    "type": "tag"
+  },
+  {
+    "id": "tag_20",
+    "name": "Lễ Hội của Thiên Chúa",
+    "slug": "le-hoi-cua-thien-chua",
+    "count": 3,
+    "type": "tag"
+  },
+  {
+    "id": "tag_16",
+    "name": "Giáo Lý",
+    "slug": "giao-ly",
+    "count": 2,
+    "type": "tag"
+  },
+  {
+    "id": "tag_19",
+    "name": "Sa-bát",
+    "slug": "sa-bat",
+    "count": 1,
+    "type": "tag"
+  },
+  {
+    "id": "tag_17",
+    "name": "Thần Học",
+    "slug": "than-hoc",
+    "count": 1,
+    "type": "tag"
   }
 ]
