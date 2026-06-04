@@ -1,4 +1,4 @@
-# WebApp_Reader — CLAUDE.md
+# BibleLibrary — CLAUDE.md
 
 ## Mục đích dự án
 

@@ -1,5 +1,5 @@
 {
-  "name": "webapp_reader",
+  "name": "biblelibrary",
   "version": "1.0.0",
   "description": "Thư viện đọc bài offline - PWA",
   "type": "module",
