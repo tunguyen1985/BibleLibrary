@@ -3,11 +3,11 @@ const STATIC_CACHE = `static-${CACHE_VERSION}`
 const IMAGES_CACHE = `images-${CACHE_VERSION}`
 
 const PRECACHE_URLS = [
-  '/',
-  '/index.html',
-  '/data/posts.json',
-  '/data/search-index.json',
-  '/data/categories.json'
+  './',
+  './index.html',
+  './data/posts.json',
+  './data/search-index.json',
+  './data/categories.json'
 ]
 
 // Cài đặt: pre-cache file tĩnh
@@ -39,7 +39,7 @@ self.addEventListener('fetch', event => {
   const url = new URL(request.url)
 
   // Hình ảnh: cache-on-access
-  if (url.pathname.startsWith('/data/images/')) {
+  if (url.pathname.includes('/data/images/')) {
     event.respondWith(
       caches.open(IMAGES_CACHE).then(cache =>
         cache.match(request).then(cached => {
@@ -63,7 +63,7 @@ self.addEventListener('fetch', event => {
           caches.open(STATIC_CACHE).then(cache => cache.put(request, res.clone()))
         }
         return res
-      }).catch(() => caches.match('/index.html'))
+      }).catch(() => caches.match(new URL('./index.html', self.location).href))
     })
   )
 })
