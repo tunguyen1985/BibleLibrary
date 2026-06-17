@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(New-Item -ItemType Directory -Force \"d:\\\\WebApp_Reader\\\\public\\\\icons\")",
+      "Bash(npm run *)",
+      "Bash(npx vite *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
+      "Bash(curl -s http://localhost:5173/data/search-index.json)",
+      "Bash(curl -s http://localhost:5173/data/categories.json)",
+      "Bash(Get-ChildItem -Path \"d:\\\\WebApp_Reader\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(ConvertTo-Csv -NoTypeInformation)",
+      "Bash(cat d:\\\\\\\\WebApp_Reader\\\\\\\\sites\\\\\\\\kytanthe\\\\\\\\data\\\\\\\\categories.json)"
+    ]
+  }
+}
