@@ -3,7 +3,7 @@
     "id": "cat_1",
     "name": "@Mục Lục",
     "slug": "muc-luc",
-    "count": 942,
+    "count": 943,
     "type": "category"
   },
   {
@@ -31,7 +31,7 @@
     "id": "cat_33",
     "name": "Chia Sẻ",
     "slug": "chia-se",
-    "count": 71,
+    "count": 72,
     "type": "category"
   },
   {
@@ -290,7 +290,7 @@
     "id": "tag_51",
     "name": "Chia Sẻ",
     "slug": "chia-se",
-    "count": 44,
+    "count": 45,
     "type": "tag"
   },
   {

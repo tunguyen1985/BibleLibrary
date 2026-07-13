@@ -3,7 +3,7 @@
     "id": "cat_1",
     "name": "@Mục Lục",
     "slug": "muc-luc",
-    "count": 649,
+    "count": 650,
     "type": "category"
   },
   {
@@ -80,14 +80,14 @@
     "id": "tag_5",
     "name": "Bài Giảng Tin Lành",
     "slug": "bai-giang-tin-lanh",
-    "count": 285,
+    "count": 286,
     "type": "tag"
   },
   {
     "id": "tag_8",
     "name": "Chú Giải Thánh Kinh",
     "slug": "chu-giai-thanh-kinh",
-    "count": 204,
+    "count": 205,
     "type": "tag"
   },
   {

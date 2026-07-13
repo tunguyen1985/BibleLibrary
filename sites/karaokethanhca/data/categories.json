@@ -3,28 +3,28 @@
     "id": "cat_26",
     "name": "@Mục Lục",
     "slug": "muc-luc",
-    "count": 545,
+    "count": 550,
     "type": "category"
   },
   {
     "id": "cat_48",
     "name": "Tâm Nguyện",
     "slug": "tam-nguyen",
-    "count": 140,
+    "count": 141,
     "type": "category"
   },
   {
     "id": "cat_39",
     "name": "Tình Yêu của Chúa",
     "slug": "tinh-yeu-cua-chua",
-    "count": 139,
+    "count": 140,
     "type": "category"
   },
   {
     "id": "cat_36",
     "name": "Sống Trong Chúa",
     "slug": "song-trong-chua",
-    "count": 108,
+    "count": 109,
     "type": "category"
   },
   {
@@ -52,7 +52,7 @@
     "id": "cat_29",
     "name": "Đức Tin",
     "slug": "duc-tin",
-    "count": 38,
+    "count": 39,
     "type": "category"
   },
   {
@@ -73,14 +73,14 @@
     "id": "cat_42",
     "name": "Yêu Chúa",
     "slug": "yeu-chua",
-    "count": 28,
+    "count": 30,
     "type": "category"
   },
   {
     "id": "cat_45",
     "name": "Mong Chúa Đến",
     "slug": "mong-chua-den",
-    "count": 25,
+    "count": 29,
     "type": "category"
   },
   {
@@ -185,14 +185,14 @@
     "id": "tag_43",
     "name": "Karaoke Thánh Ca",
     "slug": "karaoke-thanh-ca",
-    "count": 533,
+    "count": 538,
     "type": "tag"
   },
   {
     "id": "tag_49",
     "name": "Thánh Ca Tin Lành",
     "slug": "thanh-ca-tin-lanh",
-    "count": 395,
+    "count": 400,
     "type": "tag"
   },
   {
