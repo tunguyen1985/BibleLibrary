@@ -19,7 +19,6 @@ function initCategoryPanel() {
     const opening = panel.classList.contains('hidden')
     panel.classList.toggle('hidden', !opening)
     toggle.classList.toggle('open', opening)
-    toggle.querySelector('.toggle-label').textContent = opening ? 'Thu gọn' : 'Xem thêm'
   })
 }
 
@@ -32,7 +31,8 @@ function selectCategory(id) {
   panel.classList.add('hidden')
   const tog = document.getElementById('btn-cat-toggle')
   tog.classList.remove('open')
-  tog.querySelector('.toggle-label').textContent = 'Xem thêm'
+  const isHiddenCat = id !== 'all' && !document.querySelector(`#category-bar [data-id="${id}"]`)
+  tog.classList.toggle('has-active', isHiddenCat)
   renderList(document.getElementById('search-input').value.trim())
 }
 
